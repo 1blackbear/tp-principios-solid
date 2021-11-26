@@ -21,8 +21,11 @@ deve calcular o total e emitir o número do pedido. O pedido então deve ser adi
 Quando um pedido fica pronto, o cliente deve receber a notificação. Após o Cliente marcar
 o pedido como retirado, o pedido irá para o balanço final do restaurante. O sistema deve garantir que 
 só exista uma única lista de espera no restaurante. Não pode haver listas paralelas.
+  
 
-![Menu Ramen Shop](imgs/menu.png "Menu Ramen Shop.")  
+<p align="center">
+  <img src="imgs/menu.png" alt="Menu Ramen Shop.">
+</p>
 
 ### 1.2 Requisitos não funcionais
 
