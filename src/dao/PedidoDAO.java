@@ -10,7 +10,7 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PedidoDAO implements DAO<Pedido> {
+public class PedidoDAO implements IDAO<Pedido> {
 
 	private File file;
 	private FileOutputStream fos;
