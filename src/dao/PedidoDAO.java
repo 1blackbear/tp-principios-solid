@@ -10,6 +10,8 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
+import business.Pedido;
+
 public class PedidoDAO implements IDAO<Pedido> {
 
 	private File file;
@@ -45,7 +47,7 @@ public class PedidoDAO implements IDAO<Pedido> {
 	@Override
 	public void delete(Pedido p) {
 		List<Pedido> list = getAll();
-		list = list.stream().filter(pedido -> !pedido.equals(p)).toList();
+		//list = list.stream().filter(pedido -> !pedido.equals(p)).toList();
 		saveAll(list);
 
 	}

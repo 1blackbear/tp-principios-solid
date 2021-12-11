@@ -15,6 +15,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 
+import business.LEsperaSingleton;
+import business.exception.PedidoException;
+
 public class Menu extends JDialog {
 
 	/**
@@ -180,7 +183,13 @@ public class Menu extends JDialog {
 		btnFazerPedido.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				// criar o pedido
+				// realizar o pedido
+				LEsperaSingleton lista_de_espera = LEsperaSingleton.getInstancia();
+				try {
+					lista_de_espera.addPedido(null);
+				} catch (PedidoException e1) {
+					e1.printStackTrace();
+				}
 				dispose();
 			}
 		});
