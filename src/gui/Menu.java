@@ -28,6 +28,12 @@ import business.carnes.CarneBoi;
 import business.carnes.CarnePorco;
 import business.carnes.CarneVegetariana;
 import business.exception.PedidoException;
+import business.extras.CarneExtra;
+import business.extras.Chili;
+import business.extras.CremeAlho;
+import business.extras.Croutons;
+import business.extras.Shitake;
+import business.extras.Tofu;
 import business.pratos.Prato;
 import business.pratos.PratoGrande;
 import business.pratos.PratoMedio;
@@ -48,19 +54,14 @@ public class Menu extends JDialog {
 	private List<JCheckBox> extra = new ArrayList<JCheckBox>();
 	private String[] extraStr =  {"CARNE EXTRA", "CR\u00C8ME ALHO", "CHILLI", "CROUTONS", "SHITAKE", "TOFU"};
 	
+	private List<JRadioButton> carnes = new ArrayList<JRadioButton>();
+	private String[] carneStr =  {"VEGANO", "PORCO", "BOI"};
 	
-	private JRadioButton radioVegano;
-	private JRadioButton radioPorco;
-	private JRadioButton radioBoi;
-	private JRadioButton radioRefri;
-	private JRadioButton radioOCha;
-	private JRadioButton radioKoCha;
+	private List<JRadioButton> bebidas = new ArrayList<JRadioButton>();
+	private String[] bebidaStr =  {"REFRIGERANTE", "O-CHA (VERDE)", "KO-CHA (PRETO)"};
+
 	private JButton btnFazerPedido;
 
-
-	/**
-	 * Create the dialog.
-	 */
 	public Menu() {
 		setTitle("Fazer Pedido");
 		setAlwaysOnTop(true);
@@ -81,12 +82,13 @@ public class Menu extends JDialog {
 		for (int i = 0; i < 3; i++) {
 			JRadioButton radio = new JRadioButton(tamanhoStr[i]);
 			radio.setActionCommand(tamanhoStr[i]);
-			radio.setForeground(Color.WHITE);
-			tamanhos.add(radio);
+			radio.setForeground(Color.WHITE);	
 			radio.setFont(new Font("Times New Roman", Font.PLAIN, 15));
 			radio.setBackground(new Color(56, 00, 00));
 			radio.setBounds(25, altTam, 115, 23);
 			altTam += 26;
+			tamanho.add(radio);
+			tamanhos.add(radio);
 			contentPane.add(radio);
 		}
 		
@@ -101,62 +103,35 @@ public class Menu extends JDialog {
 			altExtra += 24;
 			contentPane.add(checkBox);
 			extra.add(checkBox);
-		}	
-
-		radioVegano = new JRadioButton("VEGANO");
-		radioVegano.setActionCommand("VEGANO");
-		carne.add(radioVegano);
-		radioVegano.setForeground(Color.WHITE);
-		radioVegano.setFont(new Font("Times New Roman", Font.PLAIN, 13));
-		radioVegano.setBackground(new Color(56, 0, 0));
-		radioVegano.setBounds(222, 170, 115, 23);
-		contentPane.add(radioVegano);
-
-		radioPorco = new JRadioButton("PORCO");
-		radioPorco.setActionCommand("PORCO");
-		carne.add(radioPorco);
-		radioPorco.setForeground(Color.WHITE);
-		radioPorco.setFont(new Font("Times New Roman", Font.PLAIN, 13));
-		radioPorco.setBackground(new Color(62, 0, 0));
-		radioPorco.setBounds(222, 196, 115, 23);
-		contentPane.add(radioPorco);
-
-		radioBoi = new JRadioButton("BOI");
-		radioBoi.setActionCommand("BOI");
-		carne.add(radioBoi);
-		radioBoi.setForeground(Color.WHITE);
-		radioBoi.setFont(new Font("Times New Roman", Font.PLAIN, 13));
-		radioBoi.setBackground(new Color(68, 0, 0));
-		radioBoi.setBounds(222, 222, 115, 23);
-		contentPane.add(radioBoi);
-
-		radioRefri = new JRadioButton("REFRIGERANTE");
-		radioRefri.setActionCommand("REFRIGERANTE");
-		bebida.add(radioRefri);
-		radioRefri.setForeground(Color.WHITE);
-		radioRefri.setFont(new Font("Times New Roman", Font.PLAIN, 13));
-		radioRefri.setBackground(new Color(100, 11, 11));
-		radioRefri.setBounds(222, 291, 129, 23);
-		contentPane.add(radioRefri);
-
-		radioOCha = new JRadioButton("O-CHA (VERDE)");
-		radioOCha.setActionCommand("O-CHA");
-		bebida.add(radioOCha);
-		radioOCha.setForeground(Color.WHITE);
-		radioOCha.setFont(new Font("Times New Roman", Font.PLAIN, 13));
-		radioOCha.setBackground(new Color(100, 11, 11));
-		radioOCha.setBounds(222, 319, 129, 23);
-		contentPane.add(radioOCha);
-
-		radioKoCha = new JRadioButton("KO-CHA (PRETO)");
-		radioKoCha.setActionCommand("KO-CHA");
-		bebida.add(radioKoCha);
-		radioKoCha.setForeground(Color.WHITE);
-		radioKoCha.setFont(new Font("Times New Roman", Font.PLAIN, 13));
-		radioKoCha.setBackground(new Color(100, 11, 11));
-		radioKoCha.setBounds(222, 343, 129, 23);
-		contentPane.add(radioKoCha);
+		}
 		
+		int altCarne = 170; 
+		for (int i = 0; i < 3; i++) {
+			JRadioButton radio = new JRadioButton(carneStr[i]);
+			radio.setActionCommand(carneStr[i]);
+			radio.setForeground(Color.WHITE);
+			radio.setFont(new Font("Times New Roman", Font.PLAIN, 13));
+			radio.setBackground(new Color(56, 00, 00));
+			radio.setBounds(222, altCarne, 115, 23);
+			altCarne += 26;
+			carne.add(radio);
+			carnes.add(radio);
+			contentPane.add(radio);
+		}
+
+		int altBebida = 291; 
+		for (int i = 0; i < 3; i++) {
+			JRadioButton radio = new JRadioButton(bebidaStr[i]);
+			radio.setActionCommand(bebidaStr[i]);
+			radio.setForeground(Color.WHITE);
+			radio.setFont(new Font("Times New Roman", Font.PLAIN, 13));
+			radio.setBackground(new Color(100, 11, 11));
+			radio.setBounds(222, altBebida, 129, 23);
+			altBebida += 26;
+			bebida.add(radio);
+			bebidas.add(radio);
+			contentPane.add(radio);
+		}
 		
 
 		btnFazerPedido = new JButton("FAZER PEDIDO");
@@ -173,7 +148,7 @@ public class Menu extends JDialog {
 							Prato prato = null;
 							tamanhoOpt = Optional.of(tamanhos.getSelection().getActionCommand());
 								switch(tamanhoOpt.get()) {
-									case "GRANDE":
+									case "REFRIGERANTE":
 										prato = new PratoGrande();
 										pedido.addProduto(prato);
 										break;
@@ -189,7 +164,7 @@ public class Menu extends JDialog {
 								
 							//Tratando carne
 							Optional<String> carnes = Optional.empty();
-							if (radioVegano.isSelected() || radioPorco.isSelected() || radioBoi.isSelected()) {
+							if (carne.getSelection() != null) {
 								carnes = Optional.of(carne.getSelection().getActionCommand());
 									switch(carnes.get()) {
 										case "VEGANO":
@@ -202,21 +177,48 @@ public class Menu extends JDialog {
 											pedido.addProduto(new CarneBoi(prato));
 											break;
 									}
-
 							}
+							
+							//Tratando extras
+							for (JCheckBox checkbox : extra) {
+								if (checkbox.isSelected()) {
+									String value = checkbox.getActionCommand();
+									switch(value) {
+									case "CARNE EXTRA":
+										pedido.addProduto(new CarneExtra(prato));
+										break;
+									case "CR\u00C8ME ALHO":
+										pedido.addProduto(new CremeAlho(prato));
+										break;
+									case "CHILLI":
+										pedido.addProduto(new Chili(prato));
+										break;
+									case "CROUTONS":
+										pedido.addProduto(new Croutons(prato));
+										break;
+									case "SHITAKE":
+										pedido.addProduto(new Shitake(prato));
+										break;
+									case "TOFU":
+										pedido.addProduto(new Tofu(prato));
+										break;
+								}
+								}
+							}		
+							
 						}
 					//Tratando bebidas
-					Optional<String> bebidas = Optional.empty();
-					if (radioRefri.isSelected() || radioOCha.isSelected() || radioKoCha.isSelected()) {
-						bebidas = Optional.of(bebida.getSelection().getActionCommand());
-						switch(bebidas.get()) {
+					Optional<String> bebidasOpt = Optional.empty();
+					if (bebida.getSelection() != null) {
+						bebidasOpt = Optional.of(bebida.getSelection().getActionCommand());
+						switch(bebidasOpt.get()) {
 							case "REFRIGERANTE":
 								pedido.addProduto(new Refrigerante());
 								break;
-							case "O-CHA":
+							case "O-CHA (VERDE)":
 								pedido.addProduto(new OCha());
 								break;
-							case "KO-CHA":
+							case"KO-CHA (PRETO)":
 								pedido.addProduto(new KoCha());
 								break;
 						}
@@ -225,7 +227,7 @@ public class Menu extends JDialog {
 				} catch (PedidoException p){
 					p.getMessage();
 				}
-				//System.out.print(extra.getSelection().getActionCommand());
+				
 				dispose();
 			}
 		});
