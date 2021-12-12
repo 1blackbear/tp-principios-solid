@@ -1,11 +1,12 @@
 package business;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import business.exception.PedidoException;
 
 public class LEsperaSingleton {
-	private List<Pedido> pedidos;
+	private List<Pedido> pedidos = new ArrayList<Pedido>();
 	private static final LEsperaSingleton INSTANCIA = new LEsperaSingleton();
 	
 	private LEsperaSingleton() {};

@@ -14,6 +14,7 @@ public class Pedido {
 	
 	public Pedido() {
 		this.combo = new ArrayList<IProduto>();
+		this.subject_status = new SubjectPedido(this);
 	}
 	
 	public double calcularTotal() {
