@@ -56,13 +56,14 @@ public class Retirar extends JDialog {
 			public void mouseClicked(MouseEvent e) {
 				LEsperaSingleton lista_de_espera = LEsperaSingleton.getInstancia();
 				NotificacaoPedido janela = new NotificacaoPedido("O pedido não foi encontrado :(");
-				for(Pedido p : lista_de_espera.getPedidos()) {
-					if (Integer.valueOf(txtDigiteASenha.getText()) == p.getNum_pedido()) {
-						p.setStatus("Pedido Retirado");
-						janela = new NotificacaoPedido("Pedido retirado com sucesso!");
-						break;
-					}
-				}		
+				if (txtDigiteASenha.getText() != "")
+					for(Pedido p : lista_de_espera.getPedidos()) {
+						if (Integer.valueOf(txtDigiteASenha.getText()) == p.getNum_pedido()) {
+							p.setStatus("Pedido Retirado");
+							janela = new NotificacaoPedido("Pedido retirado com sucesso!");
+							break;
+						}
+					}		
 				dispose();
 				janela.setVisible(true);
 			}
