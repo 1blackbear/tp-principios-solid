@@ -8,7 +8,8 @@ public class SubjectPedido {
 	
 	public SubjectPedido(Pedido pedido) {
 		this.observer = new ObserverConcrect(this);
-		this.pedido = pedido;
+		if (pedido != null)
+			this.pedido = pedido;
 	}
 	
 	public void notifyObserver() {

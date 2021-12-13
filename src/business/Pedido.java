@@ -20,7 +20,7 @@ public class Pedido {
 	}
 	
 	public double calcularTotal() {
-		double total = 0.0;
+		double total = 0.0d;
 		for (IProduto prod : combo) {
 			total += prod.getPreco();
 		}
@@ -54,7 +54,7 @@ public class Pedido {
 		
 	}
 	
-	public IProduto removeProduto(IProduto produto) {
+	public IProduto removeProduto(IProduto produto) throws PedidoException {
 		IProduto resp = null;
 		for (IProduto p : combo) {
 			if (p.equals(produto)) {
@@ -63,6 +63,9 @@ public class Pedido {
 				break;
 			}	
 		}
+		if (resp == null)
+			throw new PedidoException("Não foi possível remover do combo. (Produto não encontrado)");
+		
 		return resp;
 		
 	}
@@ -75,9 +78,13 @@ public class Pedido {
 		return status;
 	}
 
-	public void setStatus(String status) {
-		this.status = status;
-		this.subject_status.notifyObserver();
+	public void setStatus(String status) throws PedidoException {
+		if (status.equals("Pedido Realizado") || status.equals("Pedido Retirado") ||  status.equals("Pedido Pronto")) {
+			this.status = status;
+			this.subject_status.notifyObserver();
+		} else {
+			throw new PedidoException("Não foi possível alterar o status. (Status inválido)");
+		}
 	}
 
 	public int getNum_pedido() {

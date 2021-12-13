@@ -6,6 +6,7 @@ import javax.swing.border.EmptyBorder;
 
 import business.LEsperaSingleton;
 import business.Pedido;
+import business.exception.PedidoException;
 
 import java.awt.Color;
 import javax.swing.JLabel;
@@ -59,7 +60,11 @@ public class Retirar extends JDialog {
 				if (txtDigiteASenha.getText() != "")
 					for(Pedido p : lista_de_espera.getPedidos()) {
 						if (Integer.valueOf(txtDigiteASenha.getText()) == p.getNum_pedido()) {
-							p.setStatus("Pedido Retirado");
+							try {
+								p.setStatus("Pedido Retirado");
+							} catch (PedidoException e1) {
+								e1.printStackTrace();
+							}
 							janela = new NotificacaoPedido("Pedido retirado com sucesso!");
 							break;
 						}

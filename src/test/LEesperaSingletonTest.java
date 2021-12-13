@@ -53,14 +53,14 @@ class LEesperaSingletonTest {
 	
 	@Test
 	@DisplayName("Testando se o pedido foi removido da lista de espera")
-	void testRemoveLista() {
+	void testRemoveLista() throws PedidoException {
 		assertEquals(lista_de_espera.removePedido(p), p);
 	}
 	
 
 	@Test
 	@DisplayName("Testando se o pedido foi removido da lista de espera pelo observer")
-	void testRemoveListaObserver() {
+	void testRemoveListaObserver() throws PedidoException {
 		p.setStatus("Pedido Retirado");
 		assertThat(lista_de_espera.getPedidos(), not(p));
 	}
