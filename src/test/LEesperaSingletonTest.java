@@ -33,8 +33,8 @@ class LEesperaSingletonTest {
 	@Test
 	@DisplayName("Testando se a lista de espera é única (Singleton)")
 	void testListaSingleton() throws PedidoException {	
-		// Não é possível criar novo objeto LEsperaSingleton, apenas a referencia de uma lista única
-		//LEsperaSingleton lista = new LEsperaSingleton();
+		LEsperaSingleton lista = LEsperaSingleton.getInstancia();
+		assertEquals(lista_de_espera, lista);
 	}
 	
 	
@@ -53,14 +53,14 @@ class LEesperaSingletonTest {
 	
 	@Test
 	@DisplayName("Testando se o pedido foi removido da lista de espera")
-	void testRemoveLista() {
+	void testRemoveLista() throws PedidoException {
 		assertEquals(lista_de_espera.removePedido(p), p);
 	}
 	
 
 	@Test
 	@DisplayName("Testando se o pedido foi removido da lista de espera pelo observer")
-	void testRemoveListaObserver() {
+	void testRemoveListaObserver() throws PedidoException {
 		p.setStatus("Pedido Retirado");
 		assertThat(lista_de_espera.getPedidos(), not(p));
 	}

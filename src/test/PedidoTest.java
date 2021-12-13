@@ -83,17 +83,6 @@ class PedidoTest {
 	}
 	
 	@Test
-	@DisplayName("Testando se extrato do Pedido está em funcionameto")
-	void testExtrato() throws PedidoException {
-		Prato prato;
-		prato = new PratoMedio();
-		prato = new Chili(prato);
-		p.addProduto(prato);
-		
-		assertTrue(p.exibirExtrato() != " ");
-	}
-	
-	@Test
 	@DisplayName("Testando se o status do Pedido está em 'Pedido Realizado'")
 	void testStatusPR() throws PedidoException {
 		assertEquals(p.getStatus(), "Pedido Realizado");

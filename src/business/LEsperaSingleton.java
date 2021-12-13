@@ -23,14 +23,19 @@ public class LEsperaSingleton {
 		}
 	}
 	
-	public Pedido removePedido(Pedido p) {
+	public Pedido removePedido(Pedido p) throws PedidoException {
+		boolean encontrou = false;
+		
 		for (Pedido ped : pedidos) {
 			if (ped.equals(p)) {
 				pedidos.remove(p);
+				encontrou = true;
 				break;
-			}
-				
+			}			
 		}
+		if (!encontrou)
+			throw new PedidoException("Não foi possível remover o pedido da lista de espera. (Pedido não encontrado)");
+		
 		return p;
 	}
 	

@@ -14,6 +14,7 @@ import javax.swing.border.EmptyBorder;
 
 import business.LEsperaSingleton;
 import business.Pedido;
+import business.exception.PedidoException;
 
 public class Retirar extends JDialog {
 
@@ -22,9 +23,6 @@ public class Retirar extends JDialog {
 	private JPanel contentPane;
 	private JTextField txtDigiteASenha;
 
-	/**
-	 * Create the dialog.
-	 */
 	public Retirar() {
 		setTitle("Retirar Pedido");
 		setUndecorated(true);
@@ -57,21 +55,22 @@ public class Retirar extends JDialog {
 		btnRetirar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				// remover o pedido
 				LEsperaSingleton lista_de_espera = LEsperaSingleton.getInstancia();
-				boolean pedidoEncontrado = false;
-				
-				for(Pedido p : lista_de_espera.getPedidos()) {
-					if (Integer.valueOf(txtDigiteASenha.getText()) == p.getNum_pedido()) {
-						p.setStatus("Pedido Retirado");
-						pedidoEncontrado = true;
-						break;
-					} else {
-						pedidoEncontrado = false;
-					}
-				}
-				
+				NotificacaoPedido janela = new NotificacaoPedido("O pedido não foi encontrado :(");
+				if (txtDigiteASenha.getText() != "")
+					for(Pedido p : lista_de_espera.getPedidos()) {
+						if (Integer.valueOf(txtDigiteASenha.getText()) == p.getNum_pedido()) {
+							try {
+								p.setStatus("Pedido Retirado");
+							} catch (PedidoException e1) {
+								e1.printStackTrace();
+							}
+							janela = new NotificacaoPedido("Pedido retirado com sucesso!");
+							break;
+						}
+					}		
 				dispose();
+				janela.setVisible(true);
 			}
 		});
 		btnRetirar.setFont(new Font("Arial Narrow", Font.BOLD, 18));

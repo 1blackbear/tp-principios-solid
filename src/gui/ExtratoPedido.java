@@ -41,7 +41,7 @@ public class ExtratoPedido extends JDialog {
 		lbl.setBounds(190, 30, 300, 100);
 		contentPane.add(lbl);
 		
-		JTextArea lblExtrato = new JTextArea(pedido.exibirExtrato());
+		JTextArea lblExtrato = new JTextArea(pedido.toString());
 		lblExtrato.setForeground(Color.BLACK);
 		lblExtrato.setWrapStyleWord(true);
 		lblExtrato.setLineWrap(true);

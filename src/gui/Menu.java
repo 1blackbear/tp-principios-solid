@@ -40,26 +40,26 @@ import business.pratos.PratoPequeno;
 public class Menu extends JDialog {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	private JPanel contentPane;
 	private final ButtonGroup tamanhos = new ButtonGroup();
 	private final ButtonGroup carne = new ButtonGroup();
 	private final ButtonGroup bebida = new ButtonGroup();
-	
+
 	private List<JRadioButton> tamanho = new ArrayList<JRadioButton>();
-	private String[] tamanhoStr =  {"PEQUENO", "MEDIO", "GRANDE"};
-	
+	private String[] tamanhoStr = { "PEQUENO", "MEDIO", "GRANDE" };
+
 	private List<JCheckBox> extra = new ArrayList<JCheckBox>();
-	private String[] extraStr =  {"CARNE EXTRA", "CR\u00C8ME ALHO", "CHILLI", "CROUTONS", "SHITAKE", "TOFU"};
-	
+	private String[] extraStr = { "CARNE EXTRA", "CR\u00C8ME ALHO", "CHILLI", "CROUTONS", "SHITAKE", "TOFU" };
+
 	private List<JRadioButton> carnes = new ArrayList<JRadioButton>();
-	private String[] carneStr =  {"VEGANO", "PORCO", "BOI"};
-	
+	private String[] carneStr = { "VEGANO", "PORCO", "BOI" };
+
 	private List<JRadioButton> bebidas = new ArrayList<JRadioButton>();
-	private String[] bebidaStr =  {"REFRIGERANTE", "O-CHA (VERDE)", "KO-CHA (PRETO)"};
+	private String[] bebidaStr = { "REFRIGERANTE", "O-CHA (VERDE)", "KO-CHA (PRETO)" };
 
 	private JButton btnFazerPedido;
-	Prato prato;
+	private Prato prato;
 
 	public Menu() {
 		setTitle("Fazer Pedido");
@@ -67,21 +67,21 @@ public class Menu extends JDialog {
 		setUndecorated(true);
 		setModalityType(ModalityType.APPLICATION_MODAL);
 		setModal(true);
-		
+
 		setResizable(false);
 		setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
 		setBounds(100, 100, 441, 629);
 		setLocationRelativeTo(null);
 		contentPane = new JPanel();
 		setContentPane(contentPane);
-		//contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		// contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(null);
-		
-		int altTam = 170; 
+
+		int altTam = 170;
 		for (int i = 0; i < 3; i++) {
 			JRadioButton radio = new JRadioButton(tamanhoStr[i]);
 			radio.setActionCommand(tamanhoStr[i]);
-			radio.setForeground(Color.WHITE);	
+			radio.setForeground(Color.WHITE);
 			radio.setFont(new Font("Times New Roman", Font.PLAIN, 15));
 			radio.setBackground(new Color(56, 00, 00));
 			radio.setBounds(25, altTam, 115, 23);
@@ -90,9 +90,9 @@ public class Menu extends JDialog {
 			tamanhos.add(radio);
 			contentPane.add(radio);
 		}
-		
-		int altExtra = 294; 
-		for (int i = 0; i < 6;i++) {
+
+		int altExtra = 294;
+		for (int i = 0; i < 6; i++) {
 			JCheckBox checkBox = new JCheckBox(extraStr[i]);
 			checkBox.setActionCommand(extraStr[i]);
 			checkBox.setBackground(new Color(100, 11, 11));
@@ -103,8 +103,8 @@ public class Menu extends JDialog {
 			contentPane.add(checkBox);
 			extra.add(checkBox);
 		}
-		
-		int altCarne = 170; 
+
+		int altCarne = 170;
 		for (int i = 0; i < 3; i++) {
 			JRadioButton radio = new JRadioButton(carneStr[i]);
 			radio.setActionCommand(carneStr[i]);
@@ -118,7 +118,7 @@ public class Menu extends JDialog {
 			contentPane.add(radio);
 		}
 
-		int altBebida = 291; 
+		int altBebida = 291;
 		for (int i = 0; i < 3; i++) {
 			JRadioButton radio = new JRadioButton(bebidaStr[i]);
 			radio.setActionCommand(bebidaStr[i]);
@@ -131,7 +131,6 @@ public class Menu extends JDialog {
 			bebidas.add(radio);
 			contentPane.add(radio);
 		}
-		
 
 		btnFazerPedido = new JButton("FAZER PEDIDO");
 		btnFazerPedido.addMouseListener(new MouseAdapter() {
@@ -139,95 +138,124 @@ public class Menu extends JDialog {
 			public void mouseClicked(MouseEvent e) {
 				// realizar o pedido
 				Pedido pedido = new Pedido();
-				
-				//Tratando tamanho de prato
+				boolean estaSelecionada = false;
+				Optional<String> bebidasOpt = Optional.empty();
+				dispose();
+
+				// Verificando se alguma checkbox está selecionada
+				for (JCheckBox checkbox : extra) {
+					if (checkbox.isSelected()) {
+						estaSelecionada = true;
+						break;
+					}
+				}
+
+				// Tratando tamanho de prato
 				Optional<String> tamanhoOpt = Optional.empty();
 				try {
-						if (tamanhos.getSelection() != null) {
-							
-							tamanhoOpt = Optional.of(tamanhos.getSelection().getActionCommand());
-								switch(tamanhoOpt.get()) {
-									case "GRANDE":
-										prato = new PratoGrande();
-										break;
-									case "MEDIO":
-										prato = new PratoMedio();
-										break;
-									case "PEQUENO":
-										prato = new PratoPequeno();
-										break;
-								}
-								
-							//Tratando carne
-							Optional<String> carnes = Optional.empty();
-							if (carne.getSelection() != null) {
-								carnes = Optional.of(carne.getSelection().getActionCommand());
-									switch(carnes.get()) {
-										case "VEGANO":
-											prato = new CarneVegana(prato);
-											break;
-										case "PORCO":
-											prato = new CarnePorco(prato);
-											break;
-										case "BOI":
-											prato = new CarneBoi(prato);
-											break;
-									}
-							}
-							
-							//Tratando extras
-							for (JCheckBox checkbox : extra) {
-								if (checkbox.isSelected()) {
-									String value = checkbox.getActionCommand();
-									switch(value) {
-									case "CARNE EXTRA":
-										prato = new CarneExtra(prato);
-										break;
-									case "CR\u00C8ME ALHO":
-										prato = new CremeAlho(prato);
-										break;
-									case "CHILLI":
-										prato = new Chili(prato);
-										break;
-									case "CROUTONS":
-										prato = new Croutons(prato);
-										break;
-									case "SHITAKE":
-										prato = new Shitake(prato);
-										break;
-									case "TOFU":
-										prato = new Tofu(prato);
-										break;
-									}
-								}
-							}
-							
-							pedido.addProduto(prato);
+					if (tamanhos.getSelection() != null) {
+
+						tamanhoOpt = Optional.of(tamanhos.getSelection().getActionCommand());
+						switch (tamanhoOpt.get()) {
+						case "GRANDE":
+							prato = new PratoGrande();
+							break;
+						case "MEDIO":
+							prato = new PratoMedio();
+							break;
+						case "PEQUENO":
+							prato = new PratoPequeno();
+							break;
 						}
-					//Tratando bebidas
-					Optional<String> bebidasOpt = Optional.empty();
+
+						// Tratando carne
+						Optional<String> carnes = Optional.empty();
+						if (carne.getSelection() != null) {
+							carnes = Optional.of(carne.getSelection().getActionCommand());
+							switch (carnes.get()) {
+							case "VEGANO":
+								prato = new CarneVegana(prato);
+								break;
+							case "PORCO":
+								prato = new CarnePorco(prato);
+								break;
+							case "BOI":
+								prato = new CarneBoi(prato);
+								break;
+							}
+						}
+
+						// Tratando extras
+						for (JCheckBox checkbox : extra) {
+							if (checkbox.isSelected()) {
+								String value = checkbox.getActionCommand();
+								switch (value) {
+								case "CARNE EXTRA":
+									prato = new CarneExtra(prato);
+									break;
+								case "CR\u00C8ME ALHO":
+									prato = new CremeAlho(prato);
+									break;
+								case "CHILLI":
+									prato = new Chili(prato);
+									break;
+								case "CROUTONS":
+									prato = new Croutons(prato);
+									break;
+								case "SHITAKE":
+									prato = new Shitake(prato);
+									break;
+								case "TOFU":
+									prato = new Tofu(prato);
+									break;
+								}
+							}
+						}
+
+						pedido.addProduto(prato);
+					}  
+
 					if (bebida.getSelection() != null) {
+						// Tratando bebidas
 						bebidasOpt = Optional.of(bebida.getSelection().getActionCommand());
-						switch(bebidasOpt.get()) {
-							case "REFRIGERANTE":
-								pedido.addProduto(new Refrigerante());
-								break;
-							case "O-CHA (VERDE)":
-								pedido.addProduto(new OCha());
-								break;
-							case"KO-CHA (PRETO)":
-								pedido.addProduto(new KoCha());
-								break;
+						switch (bebidasOpt.get()) {
+						case "REFRIGERANTE":
+							pedido.addProduto(new Refrigerante());
+							break;
+						case "O-CHA (VERDE)":
+							pedido.addProduto(new OCha());
+							break;
+						case "KO-CHA (PRETO)":
+							pedido.addProduto(new KoCha());
+							break;
 						}
 					}
+					if (tamanhos.getSelection() == null && (carne.getSelection() != null || estaSelecionada)) {
+						NotificacaoPedido janelaExc = new NotificacaoPedido("Escolha um prato, por favor!");
+						dispose();
+						janelaExc.setVisible(true);
+					} else if (tamanhos.getSelection() != null || bebida.getSelection() != null) {
 
-				} catch (PedidoException p){
+						DetalhesPedido janela = new DetalhesPedido(pedido);
+						janela.setVisible(true);
+
+						// Aqui ainda não entendi como travar a thread sem bloquear o resto do programa
+						try {
+							Thread.sleep(2000);
+						} catch (InterruptedException e1) {
+							e1.printStackTrace();
+						}
+						pedido.setStatus("Pedido Pronto");
+					} else  {
+						NotificacaoPedido janelaExc = new NotificacaoPedido("Escolha algum item, por favor!");
+						janelaExc.setVisible(true);
+					}
+					
+					
+
+				} catch (PedidoException p) {
 					p.getMessage();
 				}
-				
-				dispose();
-				ExtratoPedido janela = new ExtratoPedido(pedido);
-				janela.setVisible(true);
 			}
 		});
 		btnFazerPedido.setForeground(Color.BLACK);
