@@ -17,7 +17,7 @@ public class Shitake extends IngredienteDecorator {
 
 	@Override
 	public double getPreco() {
-		return super.getPreco() + 6.9d;
+		return (double) Math.round((super.getPreco() + 6.9d)*10)/10;
 	}
 	
 	
