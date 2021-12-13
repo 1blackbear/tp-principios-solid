@@ -58,11 +58,8 @@ public class Retirar extends JDialog {
 				NotificacaoPedido janela = new NotificacaoPedido("O pedido não foi encontrado :(");
 				for(Pedido p : lista_de_espera.getPedidos()) {
 					if (Integer.valueOf(txtDigiteASenha.getText()) == p.getNum_pedido()) {
-						janela = new NotificacaoPedido("O pedido ainda não está pronto!");
-						if (p.getStatus() == "Pedido Pronto") {
-							p.setStatus("Pedido Retirado");
-							janela = new NotificacaoPedido("Pedido retirado com sucesso!");
-						}			
+						p.setStatus("Pedido Retirado");
+						janela = new NotificacaoPedido("Pedido retirado com sucesso!");
 						break;
 					}
 				}		
