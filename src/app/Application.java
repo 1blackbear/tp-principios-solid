@@ -8,6 +8,7 @@ public class Application {
 		try {
 			InitialPage frame = new InitialPage();
 			frame.setVisible(true);
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

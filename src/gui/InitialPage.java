@@ -81,5 +81,7 @@ public class InitialPage extends JFrame {
 		btnRetirar.setFont(new Font("Arial Narrow", Font.BOLD, 18));
 		btnRetirar.setBackground(Color.ORANGE);
 		contentPane.add(btnRetirar);
+		
+		
 	}
 }

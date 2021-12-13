@@ -226,8 +226,16 @@ public class Menu extends JDialog {
 				}
 				
 				dispose();
-				ExtratoPedido janela = new ExtratoPedido(pedido);
+				DetalhesPedido janela = new DetalhesPedido(pedido);
 				janela.setVisible(true);
+				
+				//Aqui ainda não entendi como travar a thread sem bloquear o resto do programa
+				try {
+					Thread.sleep(5000);
+				} catch (InterruptedException e1) {
+					e1.printStackTrace();
+				}
+				pedido.setStatus("Pedido Pronto");
 			}
 		});
 		btnFazerPedido.setForeground(Color.BLACK);

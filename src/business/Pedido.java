@@ -27,7 +27,8 @@ public class Pedido {
 		return total;
 	}
 	
-	public String exibirExtrato() {
+	@Override
+	public String toString() {
 		StringBuilder sb = new StringBuilder();
 		sb.append("Número do pedido: " + num_pedido  +"\n");
 		sb.append("Itens: \n");

@@ -10,19 +10,18 @@ import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
-import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import business.Pedido;
 
-public class ExtratoPedido extends JDialog {
+public class DetalhesPedido extends JDialog {
 
 	private static final long serialVersionUID = 1L;
 	
 	private JPanel contentPane;
 
 
-	public ExtratoPedido(Pedido pedido) {
+	public DetalhesPedido(Pedido pedido) {
 		setTitle("Extrato do Pedido");
 		setUndecorated(true);
 		setModal(true);
@@ -36,13 +35,13 @@ public class ExtratoPedido extends JDialog {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(null);
 		
-		JLabel lbl = new JLabel("EXTRATO DO PEDIDO");
+		JLabel lbl = new JLabel("DETALHES DO PEDIDO");
 		lbl.setForeground(Color.WHITE);
 		lbl.setFont(new Font("Arial Narrow", Font.BOLD, 25));
 		lbl.setBounds(190, 30, 300, 100);
 		contentPane.add(lbl);
 		
-		JTextArea lblExtrato = new JTextArea(pedido.exibirExtrato());
+		JTextArea lblExtrato = new JTextArea(pedido.toString());
 		lblExtrato.setForeground(Color.BLACK);
 		lblExtrato.setWrapStyleWord(true);
 		lblExtrato.setLineWrap(true);
@@ -55,7 +54,7 @@ public class ExtratoPedido extends JDialog {
 		btnRetirar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				dispose();
+				dispose();			
 			}
 		});
 		btnRetirar.setFont(new Font("Arial Narrow", Font.BOLD, 18));

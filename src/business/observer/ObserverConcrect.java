@@ -2,6 +2,7 @@ package business.observer;
 
 import business.LEsperaSingleton;
 import business.exception.PedidoException;
+import gui.NotificacaoPedido;
 
 public class ObserverConcrect extends Observer {
 	
@@ -13,10 +14,20 @@ public class ObserverConcrect extends Observer {
 	public void update() {
 		LEsperaSingleton lista_de_espera = LEsperaSingleton.getInstancia();
 		try {
-			if (super.subject.getPedido().getStatus() == "Pedido Realizado") {
+			String status = super.subject.getPedido().getStatus();
+			switch(status) {
+			case "Pedido Realizado":
 				lista_de_espera.addPedido(super.subject.getPedido());
-			} else {
+				break;
+			case "Pedido Retirado":
 				lista_de_espera.removePedido(super.subject.getPedido());
+				break;
+			case "Pedido Pronto":
+				NotificacaoPedido janelaP = new NotificacaoPedido("O PEDIDO " + super.subject.getPedido().getNum_pedido() + " ESTÁ PRONTO!");
+				janelaP.setVisible(true);	
+				break;
+			default:
+				break;
 			}
 		} catch (PedidoException e) {
 			e.printStackTrace();

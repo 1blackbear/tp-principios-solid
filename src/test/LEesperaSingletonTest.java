@@ -33,8 +33,8 @@ class LEesperaSingletonTest {
 	@Test
 	@DisplayName("Testando se a lista de espera é única (Singleton)")
 	void testListaSingleton() throws PedidoException {	
-		// Não é possível criar novo objeto LEsperaSingleton, apenas a referencia de uma lista única
-		//LEsperaSingleton lista = new LEsperaSingleton();
+		LEsperaSingleton lista = LEsperaSingleton.getInstancia();
+		assertEquals(lista_de_espera, lista);
 	}
 	
 	
