@@ -18,7 +18,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 
-import business.IProduto;
 import business.LEsperaSingleton;
 import business.Pedido;
 import business.bebidas.KoCha;
@@ -141,7 +140,6 @@ public class Menu extends JDialog {
 			public void mouseClicked(MouseEvent e) {
 				// realizar o pedido
 				Pedido pedido = new Pedido();
-				LEsperaSingleton lista_de_espera = LEsperaSingleton.getInstancia();
 				
 				//Tratando tamanho de prato
 				Optional<String> tamanhoOpt = Optional.empty();
@@ -223,7 +221,7 @@ public class Menu extends JDialog {
 								break;
 						}
 					}
-					lista_de_espera.addPedido(pedido);
+
 				} catch (PedidoException p){
 					p.getMessage();
 				}

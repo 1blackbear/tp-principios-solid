@@ -3,6 +3,10 @@ package gui;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import business.LEsperaSingleton;
+import business.Pedido;
+
 import java.awt.Color;
 import javax.swing.JLabel;
 import java.awt.Font;
@@ -54,6 +58,19 @@ public class Retirar extends JDialog {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				// remover o pedido
+				LEsperaSingleton lista_de_espera = LEsperaSingleton.getInstancia();
+				boolean pedidoEncontrado = false;
+				
+				for(Pedido p : lista_de_espera.getPedidos()) {
+					if (Integer.valueOf(txtDigiteASenha.getText()) == p.getNum_pedido()) {
+						p.setStatus("Pedido Retirado");
+						pedidoEncontrado = true;
+						break;
+					} else {
+						pedidoEncontrado = false;
+					}
+				}
+				
 				dispose();
 			}
 		});

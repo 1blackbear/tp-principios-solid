@@ -14,7 +14,9 @@ public class Pedido {
 	
 	public Pedido() {
 		this.combo = new ArrayList<IProduto>();
+		this.status = "Pedido Realizado";
 		this.subject_status = new SubjectPedido(this);
+		this.subject_status.notifyObserver();
 	}
 	
 	public double calcularTotal() {
@@ -73,8 +75,14 @@ public class Pedido {
 	}
 
 	public void setStatus(String status) {
+		this.subject_status.notifyObserver();
 		this.status = status;
 	}
+
+	public int getNum_pedido() {
+		return num_pedido;
+	}
+	
 	
 
 }

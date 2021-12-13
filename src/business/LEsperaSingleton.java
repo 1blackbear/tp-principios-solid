@@ -33,4 +33,8 @@ public class LEsperaSingleton {
 		}
 		return p;
 	}
+	
+	public List<Pedido> getPedidos() {
+		return pedidos;
+	}
 }
