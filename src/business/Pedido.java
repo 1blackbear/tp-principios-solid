@@ -75,8 +75,8 @@ public class Pedido {
 	}
 
 	public void setStatus(String status) {
-		this.subject_status.notifyObserver();
 		this.status = status;
+		this.subject_status.notifyObserver();
 	}
 
 	public int getNum_pedido() {

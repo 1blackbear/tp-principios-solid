@@ -26,7 +26,6 @@ import static org.hamcrest.MatcherAssert.assertThat;
  * Calcular total do pedido
  * Alterar status do pedido
  * Gerar extrato do pedido 
- *
  */
 
 class PedidoTest {
@@ -98,6 +97,13 @@ class PedidoTest {
 	@DisplayName("Testando se o status do Pedido está em 'Pedido Realizado'")
 	void testStatusPR() throws PedidoException {
 		assertEquals(p.getStatus(), "Pedido Realizado");
+	}
+	
+	@Test
+	@DisplayName("Testando se o status do Pedido está em 'Pedido Retirado'")
+	void testStatusPRet() throws PedidoException {
+		p.setStatus("Pedido Retirado");
+		assertEquals(p.getStatus(), "Pedido Retirado");
 	}
 
 
