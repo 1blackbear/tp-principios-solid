@@ -1,8 +1,13 @@
 package business.observer;
 
+import java.io.Serializable;
+
 import business.Pedido;
 
-public class SubjectPedido {
+public class SubjectPedido implements Serializable{
+	
+	private static final long serialVersionUID = 1L;
+	
 	private Observer observer;
 	private Pedido pedido;
 	

@@ -1,12 +1,15 @@
 package business;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 import business.exception.PedidoException;
 import business.observer.SubjectPedido;
 
-public class Pedido {
+public class Pedido implements Serializable {
+	private static final long serialVersionUID = 1L;
+	
 	private final int num_pedido = gerarNPedido(100000,999999);
 	private List<IProduto> combo;
 	private SubjectPedido subject_status;
