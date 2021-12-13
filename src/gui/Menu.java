@@ -18,7 +18,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 
-import business.LEsperaSingleton;
 import business.Pedido;
 import business.bebidas.KoCha;
 import business.bebidas.OCha;

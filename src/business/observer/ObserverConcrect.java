@@ -5,6 +5,10 @@ import business.exception.PedidoException;
 
 public class ObserverConcrect extends Observer {
 	
+	public ObserverConcrect(SubjectPedido sub) {
+		super.subject = sub;
+	}
+	
 	@Override
 	public void update() {
 		LEsperaSingleton lista_de_espera = LEsperaSingleton.getInstancia();
