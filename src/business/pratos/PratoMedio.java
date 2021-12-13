@@ -6,7 +6,7 @@ public class PratoMedio extends Prato {
 
 	@Override
 	public String getDescricao() {
-		return "Tamanho Médio";
+		return "Tamanho médio";
 	}
 
 	@Override

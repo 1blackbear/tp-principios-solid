@@ -2,17 +2,17 @@ package business.carnes;
 
 import business.pratos.Prato;
 
-public class CarneVegetariana extends ComidaDecorator {
+public class CarneVegana extends ComidaDecorator {
 
 	private static final long serialVersionUID = 1L;
 
-	public CarneVegetariana(Prato prato) {
+	public CarneVegana(Prato prato) {
 		super(prato);
 	}
 
 	@Override
 	public String getDescricao() {
-		return super.getDescricao() + " vegetariano";
+		return super.getDescricao() + " vegana";
 	}
 
 	@Override

@@ -18,7 +18,11 @@ public class Pedido {
 	}
 	
 	public double calcularTotal() {
-		return 0;
+		double total = 0.0;
+		for (IProduto prod : combo) {
+			total += prod.getPreco();
+		}
+		return total;
 	}
 	
 	public String exibirExtrato() {
@@ -26,7 +30,7 @@ public class Pedido {
 		sb.append("Número do pedido: " + num_pedido  +"\n");
 		sb.append("Itens: \n");
 		for (IProduto prod : combo) {
-			sb.append(prod.toString() + "\n");
+			sb.append("Descrição: " + prod.getDescricao() + "\nPreço: R$"+ prod.getPreco() + "\n");
 		}
 		sb.append("===================\n");
 		sb.append("Valor total: R$" + calcularTotal());

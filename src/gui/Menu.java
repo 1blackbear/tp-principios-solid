@@ -26,7 +26,7 @@ import business.bebidas.OCha;
 import business.bebidas.Refrigerante;
 import business.carnes.CarneBoi;
 import business.carnes.CarnePorco;
-import business.carnes.CarneVegetariana;
+import business.carnes.CarneVegana;
 import business.exception.PedidoException;
 import business.extras.CarneExtra;
 import business.extras.Chili;
@@ -142,6 +142,7 @@ public class Menu extends JDialog {
 				// realizar o pedido
 				Pedido pedido = new Pedido();
 				LEsperaSingleton lista_de_espera = LEsperaSingleton.getInstancia();
+				
 				//Tratando tamanho de prato
 				Optional<String> tamanhoOpt = Optional.empty();
 				try {
@@ -149,17 +150,14 @@ public class Menu extends JDialog {
 							
 							tamanhoOpt = Optional.of(tamanhos.getSelection().getActionCommand());
 								switch(tamanhoOpt.get()) {
-									case "REFRIGERANTE":
+									case "GRANDE":
 										prato = new PratoGrande();
-										pedido.addProduto(prato);
 										break;
 									case "MEDIO":
 										prato = new PratoMedio();
-										pedido.addProduto(prato);
 										break;
 									case "PEQUENO":
 										prato = new PratoPequeno();
-										pedido.addProduto(prato);
 										break;
 								}
 								
@@ -169,13 +167,13 @@ public class Menu extends JDialog {
 								carnes = Optional.of(carne.getSelection().getActionCommand());
 									switch(carnes.get()) {
 										case "VEGANO":
-											pedido.addProduto(new CarneVegetariana(prato));
+											prato = new CarneVegana(prato);
 											break;
 										case "PORCO":
-											pedido.addProduto(new CarnePorco(prato));
+											prato = new CarnePorco(prato);
 											break;
 										case "BOI":
-											pedido.addProduto(new CarneBoi(prato));
+											prato = new CarneBoi(prato);
 											break;
 									}
 							}
@@ -186,27 +184,28 @@ public class Menu extends JDialog {
 									String value = checkbox.getActionCommand();
 									switch(value) {
 									case "CARNE EXTRA":
-										pedido.addProduto(new CarneExtra(prato));
+										prato = new CarneExtra(prato);
 										break;
 									case "CR\u00C8ME ALHO":
-										pedido.addProduto(new CremeAlho(prato));
+										prato = new CremeAlho(prato);
 										break;
 									case "CHILLI":
-										pedido.addProduto(new Chili(prato));
+										prato = new Chili(prato);
 										break;
 									case "CROUTONS":
-										pedido.addProduto(new Croutons(prato));
+										prato = new Croutons(prato);
 										break;
 									case "SHITAKE":
-										pedido.addProduto(new Shitake(prato));
+										prato = new Shitake(prato);
 										break;
 									case "TOFU":
-										pedido.addProduto(new Tofu(prato));
+										prato = new Tofu(prato);
 										break;
+									}
 								}
-								}
-							}		
+							}
 							
+							pedido.addProduto(prato);
 						}
 					//Tratando bebidas
 					Optional<String> bebidasOpt = Optional.empty();

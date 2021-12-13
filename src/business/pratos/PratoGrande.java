@@ -5,7 +5,7 @@ public class PratoGrande extends Prato {
 
 	@Override
 	public String getDescricao() {
-		return "Tamanho Grande";
+		return "Tamanho grande";
 	}
 
 	@Override
