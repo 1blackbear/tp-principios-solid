@@ -61,6 +61,7 @@ public class Menu extends JDialog {
 	private String[] bebidaStr =  {"REFRIGERANTE", "O-CHA (VERDE)", "KO-CHA (PRETO)"};
 
 	private JButton btnFazerPedido;
+	Prato prato;
 
 	public Menu() {
 		setTitle("Fazer Pedido");
@@ -145,7 +146,7 @@ public class Menu extends JDialog {
 				Optional<String> tamanhoOpt = Optional.empty();
 				try {
 						if (tamanhos.getSelection() != null) {
-							Prato prato = null;
+							
 							tamanhoOpt = Optional.of(tamanhos.getSelection().getActionCommand());
 								switch(tamanhoOpt.get()) {
 									case "REFRIGERANTE":
@@ -229,6 +230,8 @@ public class Menu extends JDialog {
 				}
 				
 				dispose();
+				ExtratoPedido janela = new ExtratoPedido(pedido);
+				janela.setVisible(true);
 			}
 		});
 		btnFazerPedido.setForeground(Color.BLACK);

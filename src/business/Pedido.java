@@ -7,7 +7,7 @@ import business.exception.PedidoException;
 import business.observer.SubjectPedido;
 
 public class Pedido {
-	private int num_pedido;
+	private final int num_pedido = gerarNPedido(100000,999999);
 	private List<IProduto> combo;
 	private SubjectPedido subject_status;
 	private String status;
@@ -22,7 +22,20 @@ public class Pedido {
 	}
 	
 	public String exibirExtrato() {
-		return "";
+		StringBuilder sb = new StringBuilder();
+		sb.append("Número do pedido: " + num_pedido  +"\n");
+		sb.append("Itens: \n");
+		for (IProduto prod : combo) {
+			sb.append(prod.toString() + "\n");
+		}
+		sb.append("===================\n");
+		sb.append("Valor total: R$" + calcularTotal());
+		
+		return sb.toString();
+	}
+	
+	private int gerarNPedido(int min, int max){
+	    return min + (int)(Math.random() * (max - min));
 	}
 
 	public void addProduto(IProduto produto) throws PedidoException {
