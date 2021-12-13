@@ -140,6 +140,7 @@ public class Menu extends JDialog {
 				Pedido pedido = new Pedido();
 				boolean estaSelecionada = false;
 				Optional<String> bebidasOpt = Optional.empty();
+				dispose();
 
 				// Verificando se alguma checkbox está selecionada
 				for (JCheckBox checkbox : extra) {
@@ -212,8 +213,8 @@ public class Menu extends JDialog {
 						}
 
 						pedido.addProduto(prato);
-					} 
-					
+					}  
+
 					if (bebida.getSelection() != null) {
 						// Tratando bebidas
 						bebidasOpt = Optional.of(bebida.getSelection().getActionCommand());
@@ -229,13 +230,12 @@ public class Menu extends JDialog {
 							break;
 						}
 					}
-					dispose();
-					
-					if (carne.getSelection() != null || estaSelecionada) {
+					if (tamanhos.getSelection() == null && (carne.getSelection() != null || estaSelecionada)) {
 						NotificacaoPedido janelaExc = new NotificacaoPedido("Escolha um prato, por favor!");
 						dispose();
 						janelaExc.setVisible(true);
-					} else if (tamanhos.getSelection() != null || bebida.getSelection() != null ){
+					} else if (tamanhos.getSelection() != null || bebida.getSelection() != null) {
+
 						DetalhesPedido janela = new DetalhesPedido(pedido);
 						janela.setVisible(true);
 
@@ -246,10 +246,13 @@ public class Menu extends JDialog {
 							e1.printStackTrace();
 						}
 						pedido.setStatus("Pedido Pronto");
-					} else {
+					} else  {
 						NotificacaoPedido janelaExc = new NotificacaoPedido("Escolha algum item, por favor!");
 						janelaExc.setVisible(true);
-					}	
+					}
+					
+					
+
 				} catch (PedidoException p) {
 					p.getMessage();
 				}
