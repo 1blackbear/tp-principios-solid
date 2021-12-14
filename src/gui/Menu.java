@@ -239,7 +239,6 @@ public class Menu extends JDialog {
 						DetalhesPedido janela = new DetalhesPedido(pedido);
 						janela.setVisible(true);
 
-						// Aqui ainda não entendi como travar a thread sem bloquear o resto do programa
 						try {
 							Thread.sleep(2000);
 						} catch (InterruptedException e1) {
