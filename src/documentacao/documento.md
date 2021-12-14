@@ -59,7 +59,9 @@ O projeto possui um único stakeholder, o cliente (pessoas física ou jurídica)
 
 No sistema a ser desenvolvido a máquina acesa na calçada deve exibir o menu onde o cliente escolhe o prato que irá comer. Ele recebe uma senha e irá buscar o prato quando estiver pronto no restaurante. O menu do sistema irá seguir as regras apresentadas abaixo (Figura 1). O cliente poderá escolher o tamanho do prato, que possuirá um preço base. A cada adicional no Combo, o preço deverá ser acrescido. Ao terminar a escolha, o sistema deve calcular o total e emitir o número do pedido. O pedido então deve ser adicionado a uma lista de espera única. Quando um pedido estiver pronto, o cliente deverá receber a notificação. Após o cliente marcar o pedido como retirado, o pedido irá para o balanço final do restaurante.
 
-![menu](../../imgs/menu.png "Menu Ramen Shop")
+<p align="center">
+  <img src="../../imgs/menu.png" alt="Menu Ramen Shop.">
+</p>
 
 A partir da análise de documento como técnica de elicitação, foram obtidos os seguintes requisitos:
 
