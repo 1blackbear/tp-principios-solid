@@ -110,6 +110,30 @@ Assim, para obter conformidade com o diagrama de classes proposto anteriormente,
 <p align="center">
   <img src="../../imgs/pedido/pedido_img1.jpg" alt="Imagem 1 Pedido">
 </p>
+
+O construtor da classe pedido tem como objetivo apenas instanciar uma nova referência para cada variável citada anteriormente. Contudo, como o status é posto como "Pedido Realizado" na instância do objeto Pedido, é necessário notificar o observer tal mudança por meio do método "notifyObserver" do "subject_status".
+
+<p align="center">
+  <img src="../../imgs/pedido/pedido_img2.jpg" alt="Imagem 2 Pedido">
+</p>
+
+O método público "calcularTotal" é responsável por fazer aquilo que o próprio nome diz: calcular o valor total do combo solicitado pelo cliente no Pedido. Para isso, é percorrido toda a lista de IProduto "combo" acrescendo o valor total para cada item presente no combo.
+
+<p align="center">
+  <img src="../../imgs/pedido/pedido_img3.jpg" alt="Imagem 3 Pedido">
+</p>
+
+Como toda classe de negócio que possui lista, os métodos "addProduto" e "removeProduto" são responsáveis por realizar o CRUD da classe ao acrescer e retirar Produtos da lista de IProtudos "combo" presente no Pedido.
+
+<p align="center">
+  <img src="../../imgs/pedido/pedido_img4.jpg" alt="Imagem 4 Pedido">
+</p>
+
+Por último, ainda na classe Pedido, o método "setStatus" tem como função alterar o status do pedido, além disso, quando houver alguma mudança de status do pedido, é preciso notificar a mudança pelo método "notifyObserver" presente no "subject_status" do Pedido.
+
+<p align="center">
+  <img src="../../imgs/pedido/pedido_img5.jpg" alt="Imagem 5 Pedido">
+</p>
   
 
 ## 6. Conclusão
