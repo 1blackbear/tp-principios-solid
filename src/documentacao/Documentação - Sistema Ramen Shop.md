@@ -146,6 +146,24 @@ Assim, também há os métodos CRUD "addPedido" e "removePedido" para manuseio d
 <p align="center">
   <img src="../../imgs/lespera/lespera_img2.jpg" alt="Imagem 2 Lista de Espera">
 </p>
+
+A classe abstrata observer tem por função prover à classe concreta os métodos e atributos necessários para atualizar o alvo que está sendo observado. Desse modo, a implementação deste padrão de projeto irá nos ajudar a mudar o estado da lista de espera conforme mudança do status do pedido, como mencionado anteriormente no "setStatus".
+
+<p align="center">
+  <img src="../../imgs/obs/obs_img1.jpg" alt="Imagem 1 Observer">
+</p>
+
+A classe ObserverConcrect irá extender a classe abstrata Observer, assim através do polimorfismo irá receber os métodos da classe mãe e irá sobrescrevê-los.
+
+<p align="center">
+  <img src="../../imgs/obs/obs_img2.jpg" alt="Imagem 2 Observer">
+</p>
+
+O método que será sobrescrito será o "update", que a implementação servirá para ao houver mudança de status do Pedido, adicionar e remover o Pedido da lista de espera, além de que caso o pedido esteja retirado pelo cliente, o próprio será acrescido ao balaço geral do restaurante.
+
+<p align="center">
+  <img src="../../imgs/obs/obs_img3.jpg" alt="Imagem 3 Observer">
+</p>
   
 
 ## 6. Conclusão
