@@ -104,6 +104,12 @@ Durante o desedesenvolvimento além da produção do software foi gerado o diagr
 O diagrama consta com uma lista que implementa o padrão Singleton para garantir a existência de uma única lista de pedidos, o padrão Observer para realizar as operações de inserção e remoção dos pedidos na lista conforme ele altera seu estado e padrão Decorator para a definição do tipo de carne de cada prato e os extras que podem ser adicionados no mesmo.
 
 ![diagrama de classe](../diagram/PM_TP_Diagram.jpg "Diagrama de clase")
+
+Assim, para obter conformidade com o diagrama de classes proposto anteriormente, e além disso obedecer aos princípios SOLID, a classe Pedido foi implementada com apenas os atributos necessários para o negócio da classe. Assim, na imagem abaixo, pode-se observar o uso de um atributo inteiro final "num_pedido", o qual é responsável por guardar um valor único aleatório de pedido entre 1000000 e 9999999, uma lista de IProdutos "combo", um sujeito para ser observado posteriormente "subject_status" e por fim o status do pedido em forma de String.
+
+<p align="center">
+  <img src="../../imgs/pedido/pedido_img1.jpg" alt="Imagem 1 Pedido">
+</p>
   
 
 ## 6. Conclusão
