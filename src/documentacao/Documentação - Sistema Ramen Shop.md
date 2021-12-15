@@ -150,20 +150,34 @@ Assim, também há os métodos CRUD "addPedido" e "removePedido" para manuseio d
 A classe abstrata observer tem por função prover à classe concreta os métodos e atributos necessários para atualizar o alvo que está sendo observado. Desse modo, a implementação deste padrão de projeto irá nos ajudar a mudar o estado da lista de espera conforme mudança do status do pedido, como mencionado anteriormente no "setStatus".
 
 <p align="center">
-  <img src="../../imgs/obs/obs_img1.jpg" alt="Imagem 1 Observer">
+  <img src="../../imgs/observer/obs_img1.jpg" alt="Imagem 1 Observer">
 </p>
 
 A classe ObserverConcrect irá extender a classe abstrata Observer, assim através do polimorfismo irá receber os métodos da classe mãe e irá sobrescrevê-los.
 
 <p align="center">
-  <img src="../../imgs/obs/obs_img2.jpg" alt="Imagem 2 Observer">
+  <img src="../../imgs/observer/obs_img2.jpg" alt="Imagem 2 Observer">
 </p>
 
 O método que será sobrescrito será o "update", que a implementação servirá para ao houver mudança de status do Pedido, adicionar e remover o Pedido da lista de espera, além de que caso o pedido esteja retirado pelo cliente, o próprio será acrescido ao balaço geral do restaurante.
 
 <p align="center">
-  <img src="../../imgs/obs/obs_img3.jpg" alt="Imagem 3 Observer">
+  <img src="../../imgs/observer/obs_img3.jpg" alt="Imagem 3 Observer">
 </p>
+
+Para adição do Pedido ao balanço final, o método "saveToBalanco", ainda presente na classe ObserverConcrect, irá gravar os dados desse Pedido em um arquivo binário "balanco.bin".
+
+<p align="center">
+  <img src="../../imgs/observer/obs_img4.jpg" alt="Imagem 4 Observer">
+</p>
+
+Já a classe "SubjectPedido" foi criada como forma de obediência ao princípio SOLID da responsabilidade único, de modo que ela servirá para fazer a comunicação entre o Pedido e o Observer sem precisar da classe Pedido ter ciência de que está sendo observada de maneira direta pelo Observer.
+
+
+<p align="center">
+  <img src="../../imgs/observer/obs_img5.jpg" alt="Imagem 5 Observer">
+</p>
+
   
 
 ## 6. Conclusão
