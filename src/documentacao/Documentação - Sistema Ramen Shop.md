@@ -7,182 +7,259 @@
 
 ---
 
-_Curso de Engenharia de Software, Unidade PraÃ§a da Liberdade_
+_Curso de Engenharia de Software, Unidade Praça da Liberdade_
 
-_Instituto de InformÃ¡tica e CiÃªncias Exatas â€“ PontifÃ­cia Universidade CatÃ³lica de Minas Gerais (PUC MINAS), Belo Horizonte â€“ MG â€“ Brasil_
-
----
-
-_**Resumo**. Atualmente, Ã© possÃ­vel analisar que softwares embarcados sÃ£o cada vez mais utilizados em estabelecimentos comercias de comida. Assim, os Ramens Shops, restaurantes japoneses de ramen, apesar de eficientes, possuem tal necessidade de modernizaÃ§Ã£o. Dessa forma, nesse projeto iremos prover uma soluÃ§Ã£o em cÃ³digo para este problema, atravÃ©s da linguagem de programaÃ§Ã£o Java como back-end da aplicaÃ§Ã£o e do Java Swing como front-end, de modo que irÃ¡ sanar por vez a carÃªncia apontada pelos Ramens Shops._
+_Instituto de Informática e Ciências Exatas – Pontifícia Universidade Católica de Minas Gerais (PUC MINAS), Belo Horizonte – MG – Brasil_
 
 ---
 
+_**Resumo**. Atualmente, é possível analisar que softwares embarcados são cada vez mais utilizados em estabelecimentos comercias de comida. Assim, os Ramens Shops, restaurantes japoneses de ramen, apesar de eficientes, possuem tal necessidade de modernização. Dessa forma, nesse projeto iremos prover uma solução em código para este problema, através da linguagem de programação Java como back-end da aplicação e do Java Swing como front-end, de modo que irá sanar por vez a carência apontada pelos Ramens Shops._
 
-## 1. IntroduÃ§Ã£o
+---
 
-    1.1 ContextualizaÃ§Ã£o
 
-Na atualidade, hÃ¡ de se afirmar que, desde o inÃ­cio da RevoluÃ§Ã£o TÃ©cnico-CientÃ­fica, o mundo vem se modernizando cada vez mais. Desse modo, restaurantes, por consequÃªncia, tambÃ©m se tornam refÃ©ns da modernizaÃ§Ã£o, tal como o Mc Donalnads, que em muitos estabelecimentos de sua propriedade possuem mÃ¡quinas especializadas em realizar pedidos dos clientes de maneira automÃ¡tica, sem a necessidade de um ser humano atendente na intervenÃ§Ã£o.
+## 1. Introdução
+
+    1.1 Contextualização
+
+Na atualidade, há de se afirmar que, desde o início da Revolução Técnico-Científica, o mundo vem se modernizando cada vez mais. Desse modo, restaurantes, por consequência, também se tornam reféns da modernização, tal como o Mc Donalnads, que em muitos estabelecimentos de sua propriedade possuem máquinas especializadas em realizar pedidos dos clientes de maneira automática, sem a necessidade de um ser humano atendente na intervenção.
 
     1.2 Problema
 
-Ã€ vista disso, o Ramen Shop, um tipo de restaurante muito comum no JapÃ£o, hÃ¡, tambÃ©m, a necessidade de se modernizar, de modo que para a realizaÃ§Ã£o dos pedidos de ramens de modo eficaz Ã© fulcral o uso de um software embarcado, como o existente em alguns estabelecimentos do Mc Donalds.
+À vista disso, o Ramen Shop, um tipo de restaurante muito comum no Japão, há, também, a necessidade de se modernizar, de modo que para a realização dos pedidos de ramens de modo eficaz é fulcral o uso de um software embarcado, como o existente em alguns estabelecimentos do Mc Donalds.
 
     1.3 Objetivo geral
 
-Para tal possibilidade, Ã© preciso desenvolver um sistema capaz de realizar pedidos a partir de um menu. AlÃ©m disso, por trÃ¡s da interface do usuÃ¡rio, o sistema deve obter apenas uma Ãºnica lista de espera dos pedidos e gerar um balanÃ§o geral de todos os pedidos jÃ¡ feitos naquela mÃ¡quina, para controle do restaurante.
+Para tal possibilidade, é preciso desenvolver um sistema capaz de realizar pedidos a partir de um menu. Além disso, por trás da interface do usuário, o sistema deve obter apenas uma única lista de espera dos pedidos e gerar um balanço geral de todos os pedidos já feitos naquela máquina, para controle do restaurante.
 
-        1.3.1 Objetivos especÃ­ficos
-Portanto, os objetivos especÃ­ficos desse projeto sÃ£o:
+        1.3.1 Objetivos específicos
+Portanto, os objetivos específicos desse projeto são:
 
 - Criar menu capaz de realizar pedido automatizado.
 - Gerar senha para retirada do pedido pelo cliente.
 - Notificar pedido pronto ao cliente.
 - Controlar status do pedido por meio de um observador.
-- Adicionar pedidos prontos ao balanÃ§o final do restaurante.
+- Adicionar pedidos prontos ao balanço final do restaurante.
 
 
   
-Â 
+ 
 
     1.4 Justificativas
 
-Assim, tendo o problema em vista, a criaÃ§Ã£o do sistema serÃ¡ de grande utilidade para automatizaÃ§Ã£o de processos manuais dos Ramens Shop, o que nos deixa determinados a conseguir prover uma soluÃ§Ã£o para este Ã³bice.
+Assim, tendo o problema em vista, a criação do sistema será de grande utilidade para automatização de processos manuais dos Ramens Shop, o que nos deixa determinados a conseguir prover uma solução para este óbice.
 
 
 ## 2. Stakeholders
 
-O projeto possui um Ãºnico stakeholder, o cliente (pessoas fÃ­sica ou jurÃ­dica) o qual deseja realizar o seu pedido de maneira automatica, por meio de tal mÃ¡quina.
+O projeto possui um único stakeholder, o cliente (pessoas física ou jurídica) o qual deseja realizar o seu pedido de maneira automatica, por meio de tal máquina.
 
 
-## 3. Proposta da soluÃ§Ã£o
+## 3. Proposta da solução
 
-No sistema a ser desenvolvido a mÃ¡quina acesa na calÃ§ada deve exibir o menu onde o cliente escolhe o prato que irÃ¡ comer. Ele recebe uma senha e irÃ¡ buscar o prato quando estiver pronto no restaurante. O menu do sistema irÃ¡ seguir as regras apresentadas abaixo (Figura 1). O cliente poderÃ¡ escolher o tamanho do prato, que possuirÃ¡ um preÃ§o base. A cada adicional no Combo, o preÃ§o deverÃ¡ ser acrescido. Ao terminar a escolha, o sistema deve calcular o total e emitir o nÃºmero do pedido. O pedido entÃ£o deve ser adicionado a uma lista de espera Ãºnica. Quando um pedido estiver pronto, o cliente deverÃ¡ receber a notificaÃ§Ã£o. ApÃ³s o cliente marcar o pedido como retirado, o pedido irÃ¡ para o balanÃ§o final do restaurante.
+No sistema a ser desenvolvido a máquina acesa na calçada deve exibir o menu onde o cliente escolhe o prato que irá comer. Ele recebe uma senha e irá buscar o prato quando estiver pronto no restaurante. O menu do sistema irá seguir as regras apresentadas abaixo (Figura 1). O cliente poderá escolher o tamanho do prato, que possuirá um preço base. A cada adicional no Combo, o preço deverá ser acrescido. Ao terminar a escolha, o sistema deve calcular o total e emitir o número do pedido. O pedido então deve ser adicionado a uma lista de espera única. Quando um pedido estiver pronto, o cliente deverá receber a notificação. Após o cliente marcar o pedido como retirado, o pedido irá para o balanço final do restaurante.
 
 <p align="center">
   <img src="../../imgs/menu.png" alt="Menu Ramen Shop.">
 </p>
 
-A partir da anÃ¡lise de documento como tÃ©cnica de elicitaÃ§Ã£o, foram obtidos os seguintes requisitos:
+A partir da análise de documento como técnica de elicitação, foram obtidos os seguintes requisitos:
 
 * Requisitos funcionais:
    -  O sistema deve conter um menu Ramen Shop.
     -  O sistema deve permitir a montagem combo de comidas ou bebida.
     -  O sistema deve emitir o numero do pedido ao final.
-    -  O sistema deve adicionar o pedido a uma lista de espera Ãºnica.
+    -  O sistema deve adicionar o pedido a uma lista de espera única.
     -  O sistema deve notificar o cliente quando o pedido estiver pronto.
-    -   O sistema deve adicionar o pedido ao balanÃ§o final do restaurante.
+    -   O sistema deve adicionar o pedido ao balanço final do restaurante.
     -   O sistema deve permitir que o cliente retire o pedido por meio de uma senha.
 
-* Requisitos nÃ£o-funcionais:
-  - O sistema deve conter testes unitÃ¡rios.
-  - O sistema deve garantir que sÃ³ exista uma Ãºnica lista de espera no restaurante.
-  - O sistema deve seguir pelo menos trÃªs padrÃµes de projeto.
-  - O sistema deve possuir tratamento de exceÃ§Ãµes.
+* Requisitos não-funcionais:
+  - O sistema deve conter testes unitários.
+  - O sistema deve garantir que só exista uma única lista de espera no restaurante.
+  - O sistema deve seguir pelo menos três padrões de projeto.
+  - O sistema deve possuir tratamento de exceções.
 
 
 
-## 4. Projeto da SoluÃ§Ã£o
+## 4. Projeto da Solução
 
-Para o desenvolvimento do trabalho nos reunimos em dupla e dividimos as tarefas entre nÃ³s, de modo que cada um ficasse responsÃ¡vel com metade dos requisitos do sistema, aumentando a produtividade no desenvolvimento. 
+Para o desenvolvimento do trabalho nos reunimos em dupla e dividimos as tarefas entre nós, de modo que cada um ficasse responsável com metade dos requisitos do sistema, aumentando a produtividade no desenvolvimento. 
 
-Utilizamos Java como linguagem de programaÃ§Ã£o para o back-end e padrÃµes de projeto Singleton, Decorator e Observer para que o sistema atendesse aos princÃ­pios SOLID. Foram realizados testes unitÃ¡rios para a validaÃ§Ã£o dos requisitos do sistema utilizando o framework de testes automatizados JUnit. E tratamento de exceÃ§Ãµes para garantir o funcionamento sem a ocorrencia de falhas.
+Utilizamos Java como linguagem de programação para o back-end e padrões de projeto Singleton, Decorator e Observer para que o sistema atendesse aos princípios SOLID. Foram realizados testes unitários para a validação dos requisitos do sistema utilizando o framework de testes automatizados JUnit. E tratamento de exceções para garantir o funcionamento sem a ocorrencia de falhas.
 
-Desenvolvemos uma interface de usuario simples utilizando como base o cardÃ¡pio do _Ramen Shop_ que nos foi apresentado com o framework grÃ¡fico do Java Swing realizando o devido tratamento de eventos. 
+Desenvolvemos uma interface de usuario simples utilizando como base o cardápio do _Ramen Shop_ que nos foi apresentado com o framework gráfico do Java Swing realizando o devido tratamento de eventos. 
 
 
 ## 5. Artefatos principais
 
-Durante o desedesenvolvimento alÃ©m da produÃ§Ã£o do software foi gerado o diagrama de classes do sistema mostrando as classes necessÃ¡rias  e o relacionamento entre as mesmas.
+Durante o desedesenvolvimento além da produção do software foi gerado o diagrama de classes do sistema mostrando as classes necessárias  e o relacionamento entre as mesmas.
 
 
   
-Â 
+ 
 
     5.1 Diagrama de classe
 
-O diagrama consta com uma lista que implementa o padrÃ£o Singleton para garantir a existÃªncia de uma Ãºnica lista de pedidos, o padrÃ£o Observer para realizar as operaÃ§Ãµes de inserÃ§Ã£o e remoÃ§Ã£o dos pedidos na lista conforme ele altera seu estado e padrÃ£o Decorator para a definiÃ§Ã£o do tipo de carne de cada prato e os extras que podem ser adicionados no mesmo.
+O diagrama consta com uma lista que implementa o padrão Singleton para garantir a existência de uma única lista de pedidos, o padrão Observer para realizar as operações de inserção e remoção dos pedidos na lista conforme ele altera seu estado e padrão Decorator para a definição do tipo de carne de cada prato e os extras que podem ser adicionados no mesmo.
 
 ![diagrama de classe](../diagram/PM_TP_Diagram.jpg "Diagrama de clase")
 
-    5.2 CÃ³digo fonte
+    5.2 Código fonte
 
-Assim, para obter conformidade com o diagrama de classes proposto anteriormente, e alÃ©m disso obedecer aos princÃ­pios SOLID, a classe Pedido foi implementada com apenas os atributos necessÃ¡rios para o negÃ³cio da classe. Assim, na imagem abaixo, pode-se observar o uso de um atributo inteiro final "num_pedido", o qual Ã© responsÃ¡vel por guardar um valor Ãºnico aleatÃ³rio de pedido entre 1000000 e 9999999, uma lista de IProdutos "combo", um sujeito para ser observado posteriormente "subject_status" e por fim o status do pedido em forma de String.
+Assim, para obter conformidade com o diagrama de classes proposto anteriormente, e além disso obedecer aos princípios SOLID, a classe Pedido foi implementada com apenas os atributos necessários para o negócio da classe. Assim, na imagem abaixo, pode-se observar o uso de um atributo inteiro final "num_pedido", o qual é responsável por guardar um valor único aleatório de pedido entre 1000000 e 9999999, uma lista de IProdutos "combo", um sujeito para ser observado posteriormente "subject_status" e por fim o status do pedido em forma de String.
 
 <p align="center">
   <img src="../../imgs/pedido/pedido_img1.jpg" alt="Imagem 1 Pedido">
 </p>
 
-O construtor da classe pedido tem como objetivo apenas instanciar uma nova referÃªncia para cada variÃ¡vel citada anteriormente. Contudo, como o status Ã© posto como "Pedido Realizado" na instÃ¢ncia do objeto Pedido, Ã© necessÃ¡rio notificar o observer tal mudanÃ§a por meio do mÃ©todo "notifyObserver" do "subject_status".
+O construtor da classe pedido tem como objetivo apenas instanciar uma nova referência para cada variável citada anteriormente. Contudo, como o status é posto como "Pedido Realizado" na instância do objeto Pedido, é necessário notificar o observer tal mudança por meio do método "notifyObserver" do "subject_status".
 
 <p align="center">
   <img src="../../imgs/pedido/pedido_img2.jpg" alt="Imagem 2 Pedido">
 </p>
 
-O mÃ©todo pÃºblico "calcularTotal" Ã© responsÃ¡vel por fazer aquilo que o prÃ³prio nome diz: calcular o valor total do combo solicitado pelo cliente no Pedido. Para isso, Ã© percorrido toda a lista de IProduto "combo" acrescendo o valor total para cada item presente no combo.
+O método público "calcularTotal" é responsável por fazer aquilo que o próprio nome diz: calcular o valor total do combo solicitado pelo cliente no Pedido. Para isso, é percorrido toda a lista de IProduto "combo" acrescendo o valor total para cada item presente no combo.
 
 <p align="center">
   <img src="../../imgs/pedido/pedido_img3.jpg" alt="Imagem 3 Pedido">
 </p>
 
-Como toda classe de negÃ³cio que possui lista, os mÃ©todos "addProduto" e "removeProduto" sÃ£o responsÃ¡veis por realizar o CRUD da classe ao acrescer e retirar Produtos da lista de IProtudos "combo" presente no Pedido.
+Como toda classe de negócio que possui lista, os métodos "addProduto" e "removeProduto" são responsáveis por realizar o CRUD da classe ao acrescer e retirar Produtos da lista de IProtudos "combo" presente no Pedido.
 
 <p align="center">
   <img src="../../imgs/pedido/pedido_img4.jpg" alt="Imagem 4 Pedido">
 </p>
 
-Por Ãºltimo, ainda na classe Pedido, o mÃ©todo "setStatus" tem como funÃ§Ã£o alterar o status do pedido, alÃ©m disso, quando houver alguma mudanÃ§a de status do pedido, Ã© preciso notificar a mudanÃ§a pelo mÃ©todo "notifyObserver" presente no "subject_status" do Pedido.
+Por último, ainda na classe Pedido, o método "setStatus" tem como função alterar o status do pedido, além disso, quando houver alguma mudança de status do pedido, é preciso notificar a mudança pelo método "notifyObserver" presente no "subject_status" do Pedido.
 
 <p align="center">
   <img src="../../imgs/pedido/pedido_img5.jpg" alt="Imagem 5 Pedido">
 </p>
 
-A classe "LEsperaSingleton" procura fazer uma lista de espera Ãºnica para os pedidos, de modo que nÃ£o haja nenhuma lista paralela em andamento. Para tal, o padrÃ£o de projeto Singleton se faz de extrema necessidade, uma vez que por meio dele Ã© garantido que nÃ£o haja nenhuma outra instÃ¢ncia da classe diferente da retornada pelo mÃ©todo "getInstancia".
+A classe "LEsperaSingleton" procura fazer uma lista de espera única para os pedidos, de modo que não haja nenhuma lista paralela em andamento. Para tal, o padrão de projeto Singleton se faz de extrema necessidade, uma vez que por meio dele é garantido que não haja nenhuma outra instância da classe diferente da retornada pelo método "getInstancia".
 
 <p align="center">
   <img src="../../imgs/lespera/lespera_img1.jpg" alt="Imagem 1 Lista de Espera">
 </p>
 
-Assim, tambÃ©m hÃ¡ os mÃ©todos CRUD "addPedido" e "removePedido" para manuseio da lista de pedidos presente na classe.
+Assim, também há os métodos CRUD "addPedido" e "removePedido" para manuseio da lista de pedidos presente na classe.
 
 <p align="center">
   <img src="../../imgs/lespera/lespera_img2.jpg" alt="Imagem 2 Lista de Espera">
 </p>
 
-A classe abstrata observer tem por funÃ§Ã£o prover Ã  classe concreta os mÃ©todos e atributos necessÃ¡rios para atualizar o alvo que estÃ¡ sendo observado. Desse modo, a implementaÃ§Ã£o deste padrÃ£o de projeto irÃ¡ nos ajudar a mudar o estado da lista de espera conforme mudanÃ§a do status do pedido, como mencionado anteriormente no "setStatus".
+A classe abstrata observer tem por função prover à classe concreta os métodos e atributos necessários para atualizar o alvo que está sendo observado. Desse modo, a implementação deste padrão de projeto irá nos ajudar a mudar o estado da lista de espera conforme mudança do status do pedido, como mencionado anteriormente no "setStatus".
 
 <p align="center">
   <img src="../../imgs/observer/obs_img1.jpg" alt="Imagem 1 Observer">
 </p>
 
-A classe ObserverConcrect irÃ¡ extender a classe abstrata Observer, assim atravÃ©s do polimorfismo irÃ¡ receber os mÃ©todos da classe mÃ£e e irÃ¡ sobrescrevÃª-los.
+A classe ObserverConcrect irá extender a classe abstrata Observer, assim através do polimorfismo irá receber os métodos da classe mãe e irá sobrescrevê-los.
 
 <p align="center">
   <img src="../../imgs/observer/obs_img2.jpg" alt="Imagem 2 Observer">
 </p>
 
-O mÃ©todo que serÃ¡ sobrescrito serÃ¡ o "update", que a implementaÃ§Ã£o servirÃ¡ para ao houver mudanÃ§a de status do Pedido, adicionar e remover o Pedido da lista de espera, alÃ©m de que caso o pedido esteja retirado pelo cliente, o prÃ³prio serÃ¡ acrescido ao balaÃ§o geral do restaurante.
+O método que será sobrescrito será o "update", que a implementação servirá para ao houver mudança de status do Pedido, adicionar e remover o Pedido da lista de espera, além de que caso o pedido esteja retirado pelo cliente, o próprio será acrescido ao balaço geral do restaurante.
 
 <p align="center">
   <img src="../../imgs/observer/obs_img3.jpg" alt="Imagem 3 Observer">
 </p>
 
-Para adiÃ§Ã£o do Pedido ao balanÃ§o final, o mÃ©todo "saveToBalanco", ainda presente na classe ObserverConcrect, irÃ¡ gravar os dados desse Pedido em um arquivo binÃ¡rio "balanco.bin".
+Para adição do Pedido ao balanço final, o método "saveToBalanco", ainda presente na classe ObserverConcrect, irá gravar os dados desse Pedido em um arquivo binário "balanco.bin".
 
 <p align="center">
   <img src="../../imgs/observer/obs_img4.jpg" alt="Imagem 4 Observer">
 </p>
 
-JÃ¡ a classe "SubjectPedido" foi criada como forma de obediÃªncia ao princÃ­pio SOLID da responsabilidade Ãºnico, de modo que ela servirÃ¡ para fazer a comunicaÃ§Ã£o entre o Pedido e o Observer sem precisar da classe Pedido ter ciÃªncia de que estÃ¡ sendo observada de maneira direta pelo Observer.
+Já a classe "SubjectPedido" foi criada como forma de obediência ao princípio SOLID da responsabilidade único, de modo que ela servirá para fazer a comunicação entre o Pedido e o Observer sem precisar da classe Pedido ter ciência de que está sendo observada de maneira direta pelo Observer.
 
 
 <p align="center">
   <img src="../../imgs/observer/obs_img5.jpg" alt="Imagem 5 Observer">
 </p>
 
+A interface genérica "IDAO<T>" foi criada para declarar os metodos de acesso aos dados armazenados em arquivo, como é uma interface generica é capaz de funcionar com qualquer classe serializada.
+
+<p align="center">
+  <img src="../../imgs/idao/idao_img1.png" alt="Imagem 1 IDAO">
+</p>
+
+A classe "PedidoDAO" implenta a interface IDAO e tem a responsabilidade de manipular os arquivos de balanço do ramen shop. Tem como atributos objetos de classes do Java responáveis pela manipulacao dos arquivos.
+
+<p align="center">
+  <img src="../../imgs/pedidodao/pedidodao_img1.png" alt="Imagem 1 PedidoDAO">
+</p>
+
+Ela implementa os método da interface tratando as excessões.
+
+<p align="center">
+  <img src="../../imgs/pedidodao/pedidodao_img2.png" alt="Imagem 2 PedidoDAO">
+</p>
+
+A interface "IProduto" é a classe responsavel pela generalização dos produtos e foi criada em concordancia ao princípio SOLID da inversão de depencia, de modo que o pedido não será responsavel por trabalhar diretamente com os produtos concretos mas sim com a interface 
+
+<p align="center">
+  <img src="../../imgs/iproduto/iproduto_img1.png" alt="Imagem 1 IProduto">
+</p>
+
+Para a definição dos produtos foram usadas as classes abstratas "Prato" e "Bebida" que implementam a interface IProduto e declaram os metodos getDescricao() e getPreco como abstratos para que as classes que extendem sejam obrigados a implementar esses métodos
+
+<p align="center">
+  <img src="../../imgs/iproduto/iproduto_img2.png" alt="Imagem 2 IProduto">
+</p>
+
+Desse modo as classes "PratoGrande", "PratoMedio", "PratoPequeno" herdam de "Prato" e sobreescrevem os métodos definindo cada uma a sua descrição e preço.
+
+<p align="center">
+  <img src="../../imgs/iproduto/iproduto_img3.png" alt="Imagem 3 IProduto">
+</p>
+
+Por semelhante modo as classes "KoCha", "OCha" e "Refrigerante" herdam de "Bebida" e sobreescrevem os métodos com a descrição e preço.
+
+<p align="center">
+  <img src="../../imgs/iproduto/iproduto_img4.png" alt="Imagem 4 IProduto">
+</p>
+
+Na definição das carnes do prato temos a classe abstrata "ComidaDecorator" que herda de "Prato" e está em conformidade o padrão Decorator onde tem um único atributo que é um prato onde é acrescentado o tipo de carne.
+
+<p align="center">
+  <img src="../../imgs/comidadecorator/comidadecorator_img1.png" alt="Imagem 1 ComidaDecorator">
+</p>
+
+O constrututor dessa classe apenas recebe um prato e testa se é valido e define como atributo
+
+<p align="center">
+  <img src="../../imgs/comidadecorator/comidadecorator_img2.png" alt="Imagem 2 ComidaDecorator">
+</p>
+
+Os métodos getPreco() e getDescricao() apenas retornam o preco e a descricao do prato que é atributo
+
+<p align="center">
+  <img src="../../imgs/comidadecorator/comidadecorator_img3.png" alt="Imagem 3 ComidaDecorator">
+</p>
+
+As classes "CarneBoi", "CarnePorco" e "CarneVegana" herdam de "ComidaDecorator", o construtor apenas define o prato chamando o construtor da superclasse. A classe sobrescreve os metodos getDescricao() e getPreco() retornando a classe pai acrescentando o tipo de carne na descrição e aumentado o preco.
+
+<p align="center">
+  <img src="../../imgs/comidadecorator/comidadecorator_img4.png" alt="Imagem 4 ComidaDecorator">
+</p>
+
+Mantendo o padrão decorator a classe abstrata "IngredienteDecorator" herda de "ComidaDecorator" e sobreescreve os métodos retornando a classe pai
+
+<p align="center">
+  <img src="../../imgs/ingredientedecorator/ingerdientedecorator_img1.png" alt="Imagem 1 IngredienteDecorator">
+</p>
+
+As classes "CarneExtra", "Chili", "CremeAlho", "Croutons", "Shitake" e "Tofu" herdam de "IngredienteDecorator", o construtor apenas define o prato chamando o construtor da superclasse. A classe sobrescreve os metodos getDescricao() e getPreco() retornando a classe pai acrescentando o tipo de extra na descrição e aumentado o preço.
+
+<p align="center">
+  <img src="../../imgs/ingredientedecorator/ingerdientedecorator_img2.png" alt="Imagem 2 IngredienteDecorator">
+</p>
+
   
 
-## 6. ConclusÃ£o
+## 6. Conclusão
 
-Com esse podemos aprender mais acerta dos conceitos de programaÃ§Ã£o orientada a objetos e aplicar os conceitos aprendidos nas matÃ©rias de ProgramaÃ§Ã£o Modular e LaboratÃ³rio de ProgramaÃ§Ã£o Modular. TambÃ©m podemos compreender acerca do desenvolvimento de aplicaÃ§Ãµes completas em Java e a utilizaÃ§Ã£o de tecnicas de desenvolvimento e padrÃµes de projetos e principios SOLID.
-
+Com esse podemos aprender mais acerta dos conceitos de programação orientada a objetos e aplicar os conceitos aprendidos nas matérias de Programação Modular e Laboratório de Programação Modular. Também podemos compreender acerca do desenvolvimento de aplicações completas em Java e a utilização de tecnicas de desenvolvimento e padrões de projetos e principios SOLID.
