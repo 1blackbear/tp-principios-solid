@@ -134,6 +134,18 @@ Por último, ainda na classe Pedido, o método "setStatus" tem como função alt
 <p align="center">
   <img src="../../imgs/pedido/pedido_img5.jpg" alt="Imagem 5 Pedido">
 </p>
+
+A classe "LEsperaSingleton" procura fazer uma lista de espera única para os pedidos, de modo que não haja nenhuma lista paralela em andamento. Para tal, o padrão de projeto Singleton se faz de extrema necessidade, uma vez que por meio dele é garantido que não haja nenhuma outra instância da classe diferente da retornada pelo método "getInstancia".
+
+<p align="center">
+  <img src="../../imgs/lespera/lespera_img1.jpg" alt="Imagem 1 Lista de Espera">
+</p>
+
+Assim, também há os métodos CRUD "addPedido" e "removePedido" para manuseio da lista de pedidos presente na classe.
+
+<p align="center">
+  <img src="../../imgs/lespera/lespera_img2.jpg" alt="Imagem 2 Lista de Espera">
+</p>
   
 
 ## 6. Conclusão
